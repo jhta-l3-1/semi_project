@@ -1,0 +1,336 @@
+	
+	
+	**** Servlet ****
+	
+	
+				1. 준비
+						1) 웹서버 준비
+							jetty, tomcat, apache, iis, webLogic, Jeus, webSphere, ...
+				
+				2. 웹 어플리케이션 준비
+						1) 폴더 생성(어플리케이션)
+								-폴더생성	
+								
+						2) 메인 페이지 생성
+								-index.html
+						
+						3) 기본 구조
+								프로젝트 폴더  ->	 WEB-INF  ->  classes
+											     			  lib
+															  web.xml
+												
+				3. 서블릿
+						1) 서블릿(servlet)이란?
+								- 서버에서 실행되는 java application
+						
+						2) 준비	
+								- api document
+								- 라이브러리
+								
+						3) 웹 프로젝트 준비
+								- ServletAPP
+								
+						4) 특징
+								- 자바로 만든 프로그램
+								- 클라이언트와 소통이 가능
+								- javax.servlet.http.HttpServlet (상속)
+								
+						5) 서블릿 소통 방식
+								- 서블릿만으로 소통
+								- 미들 페이즈(html)를 통해 서블릿과 소통
+						
+						6) 서블릿을 구성하는 핵심 클래스
+								- HttpServlet
+											javax.servlet.GenericServlet
+										
+								- HttpServletRequest(클라이언트 -> 서버)
+											public interface ServletRequest
+											
+											req.getParameter (클라이언트가 보내온 데이터를 가져옴)
+											
+								- HttpServletResponse(서버 -> 클라이언트)
+											public interface ServletResponse
+									
+						
+						 7) 요청방식
+								- GET
+										- 하이퍼링크 전송 방식, URL 전송방식
+										- 전송 방식이 다양
+										- 소량의 데이터만 전송가능
+										- 전송되는 데이터가 노출(주소 표시줄)
+										- 기본 요청 방식
+										- 서버측 데이터의 정보를 조회
+										
+								- POST
+										- 폼 전송 방식 단 한가지
+										- 대량의 데이터 전송가능
+										- 데이터가 노출되지 않는다.
+										- 서버측 데이터 변경
+						
+						
+						8) 데이터 전송을 위한 주요 메서드
+								- String getParameter(String name)
+										: 개별적으로 변수값을 따로 가져올 때
+								
+								- String[] getParameterValues(String name)
+										: 여러개의 변수값을 배열로 가져옴
+								
+								- java.util.Enumeration<String> getParameterNames()
+										: 열거형
+										: 값을 가르키는 모든변수를 한꺼번에 가져옴 
+										
+								- java.util.Map<String.String[]> getParameterMap()
+										: 두개의 데이터를 하나로 묶어서 가져오는것
+									
+						9) 서블릿의 LifeCycle
+								(1) init()  메서드 실행시 초기화 부분에서 자동으로 실행되는 부분
+								(2) service(); 메서드 내용부분
+								(3) destroy() 메서드 종료부분
+								
+						10) header 정보 가져오기
+								- httpServletRequest
+								
+						11) 페이지 이동 2가지
+								(1) 클라이언트 측 이동
+										-> 사용자가 이동사실 알수 있으며, 다른 웹 사이트로 이동할수있다.
+									- html
+												<a></a>	
+												<meta ...>
+												
+									
+									- javascript
+										
+												history
+												location
+									- java
+											response.sendRedirect();
+											
+								 (2) 서버 측 이동
+								 			-> 사용자가 이동사실을 모르며 , 다른 웹 사이트로 이동할수 없다.
+								 	- java	
+								 			<jsp:include>
+								 			<jsp:forward>
+								 			<#@page errorPage="">
+									
+								(2) Data Persistance 
+										: 비연결 지향적인 html의 단점을 보안하기위해서 사용
+										: 클라이언트와의 정보 유지를 위해 쿠키와 세션을 사용	
+									
+									- Cookie : 서버에 접속시 접속한 클라이언트의 정보를 클라이언트에 저장한다.
+											 : 이후에 서버에 전송되는 요청에는 쿠키가 가지고 있는 정보가 같이 포함되어서 전송.
+											 : HttpServletRequest, HttpServeltResponse
+										
+									
+									- Session : 서버에 저장되어 현재 사용자만이 인증을 받으며 쿠키보다 보안성이 높다.
+											  : 단, 서버에 저장되어 메모리를 차지하기 때문에 서버에 무리가 간다.
+											  : HttpSession
+											  			->  (변수, 값)
+											  			-> setMaxInactiveInterval : 졔한을 주어 자동으로 세션이삭제되게 하는 메소드
+														-> getCreationTime() : 세션을 만든 시간을보여준다(접속시간을보여준다.)
+									
+									
+
+* JSP
+						
+							1. HTML안에 자바 코드를 포함시키는 형태
+							2. 구성요소
+								1) Template Data
+											- html, xml 등
+								2) Elements(동적 데이터)
+									(1) Script Element
+										- HTML 안에 자바 코드를 끼워넣게 해줄 수 있는 문법
+											<%!    %> : 선언부(declaration) -> 인스턴스변수, 메서드
+																			
+											<%    %> : 처리부(scriptlet)  -> 세미콜론 사용
+																		 -> 순수한 자바 코드
+											<%=   %> : 표현부(expression) 
+											
+									(2) Dircetive - 지시어
+										- 현재 페이지에 지시를 내리고자 할때 사용하는 도구 
+											<%@page properties....  %>
+											
+													{ import=”importList” }
+													{ errorPage=”error_url” }
+													{ isErrorPage=”true|false” }
+													{ contentType=”ctinfo” }
+													{ session=”true|false” }
+													{ buffer=”none|sizekb” }		-> 출력 버퍼
+													{ autoFlush=”true|false” }
+													{ info=”info_text” }
+													{ isELIgnored=”true|false” }
+											
+											<%@include file="..."  %>
+											<%@taglib properties.... %>
+										
+										
+									(3) Implicit Object
+										- 입출력 관련
+											request		: HttpServletRequest(입출력, context)
+											response	: HttpServletResponse
+											out			: javax.serlvet.jspWriter
+											
+										-		
+											page		: javax.servlet.HttpJspPage
+											config		: javax.serlvet.ServletConfig
+											
+										- context	
+											session		: HttpSession	
+											application : ServletContext
+											pageContext : javax.servlet.jsp.PageContext
+									
+										- 예외처리
+											exception	: java.lang.Throwable
+										
+										- Context관련 객체들의 공통 메서드
+												setAttribute(변수명, 값)
+												getAttribute(변수명)
+												removeAttribute(변수명)
+												
+												
+									(4) Action Tag :  XML 문법을 따르기 때문에 단독 태그의 경우도 반드시 종료 태그를 포함해야 한다.
+									
+									
+									(5)	EL	
+									
+									
+									
+								3) LifeCycle
+									(1) jspInit() - 서블릿의 초기화 작업이 수행될 때 자동으로 호출되는 메서드
+									(2) jspService()
+									(3) jspDestroy() - 서블릿의 마무리 작업이 수행될때 자동으로 호출되는 메서드
+			
+									
+								4) 유효성 검사
+									(1) 클라이언트 체크
+									(2) 서버 체크	
+									
+							
+								5) Action Tag
+								    (1) 표준 액션 태그 : 자바소스를 html안에서 사용을 안하려고
+								    		
+									     ㄱ. bean tag	
+											 - <jsp:useBean> 자바빈을 JSP 페이지에서 사용할 때 사용 
+											 - <jsp:setProperty> 프로퍼티의 값을 세팅할 때 사용 
+											 - <jsp:getProperty> 프로퍼티의 값을 얻어낼 때 사용
+										 
+										 ㄴ. 
+											 - <jsp:forward> 페이지 사이의 제어를 이동시킬 때 사용 
+									    	 - <jsp:include> 다른 페이지의 실행 결과를 현재의 페이지에 포함시킬때 사용 
+											 - <jsp:params> 
+											 - <jsp:param> 
+
+								    (2) 사용자 정의 액션 태그
+								     	 - <jsp:include> 다른 페이지의 실행 결과를 현재의 페이지에 포함시킬때 사용
+													-> 페이지 이동 및 복귀
+													-> 이동 및 복귀하면서 파라미터 전달
+													-> request scope를 주로 이용
+													
+									* jps - 프레젠테이션 로직 
+									  bean - 비지니스 로직
+													
+													
+													
+										- <jsp:forward> 페이지 사이의 제어를 이동시킬 때 사용
+													-> 서버측 페이지 이동 기술 : 사용자가 페이지가 이동한 줄 모른다.
+									
+									
+							   	6) BEANS(=컨퍼런트)
+									   : jsp에서 떨어져나온 자바클래스
+									   
+									  (1) <jsp:useBean> 자바빈을 JSP 페이지에서 사용할 때 사용
+									  				-> 인스턴스 생성
+									  				-> 인스턴스가 생성되어 있다면 참조
+									  				-> scope : 빈객체를 어디까지 사용할 것인가?
+									  				
+									  (2) <jsp:setProperty> 프로퍼티의 값을 세팅할 때 사용 
+									  				-> setter메서드 호출 
+
+									  (3) <jsp:getProperty> 프로퍼티의 값을 얻어낼 때 사용
+									  				-> getter메서드 호출 + 출력
+									  				
+									* java bean 규약
+									[ property 규약]
+									
+											(1) getter 메서드의 경우
+													 - get(소문자)으로 시작한다.
+													 - get다음에 시작되는 첫번째 문자는 대문자
+													 - 반드시 리턴 타입이 와야 한다.
+													 - 반드시 매개변수를 없어야 함
+					 								
+											(2) setter 메서드의 경우
+													 - set(소문자)으로 시작한다.
+													 - set다음에 시작되는 첫번째 문자는 대문자
+													 - 반드시 리턴 타입으로 void가 와야 한다.
+													 - 반드시 매개변수가 있어야함.
+									
+										ex) <jsp:useBean id="변수" class="클래스경로"/>
+											<jsp:setProperty property="set메서드이름" name="클래스 변수" value="값"/>
+											<jsp:getProperty property="get메서드이름" name="클래스 변수"/>
+											
+	
+				7) 빈의 property 종류
+						(1) 참-거짓 프로퍼티
+						
+								- boolean isValid(){
+										...
+										return false;/true;
+								  }
+								  
+								  			= 먼저 get 검색 후 is 검색
+						
+						(2) 인덱스 프로퍼티
+								- 배열값으로 여러개를 return한다.
+								- 인덱스 프로퍼티 사용시 액션태그(단일값만 받을수있는) 사용 불가
+								- 사용자 정의 액션태그 사용
+								- jstl [ 여러개발자의 오픈소스]
+								- el [ 표준문법, 출력 관련 코드 ]
+								
+						
+						
+						
+						** 패턴
+							
+							DTO (Data Tranfer Object) = VO = Entity (대부분 같은 의미로 프로젝트에서 사용)
+							
+								- 데이터 이동 객체, 여러 형태의 데이터를 저장하고 이동할 수 있도록 사용자에 의해 정의되어지는 객체
+								  테이블에 있는 필드값을 그대로 멤버필드값으로 만들어준다. getter메서드와 setter메서드로 구성되어 있다. 
+
+
+						**  파일경로
+									String path = getServletContext().getRealPath("/");
+									
+							
+		
+						* 파일업로드
+							www.servlets.com	
+							
+						* MultipartRequest
+																					  
+							↓ request 객체,               ↓ 저장될 서버 경로,       ↓ 파일 최대 크기,    ↓ 인코딩 방식,       ↓ 같은 이름의 파일명 방지 처리
+							HttpServletRequest request, String saveDirectory, int maxPostSize, String encoding, FileRenamePolicy policy)
+							
+						* MVC Architecture -> model view controller -> 임무 분담
+						
+							 -	모델(Model) - 정보를 담은 부분
+							 -	뷰(View) - 표현을 맡는 부분
+							 -	컨트롤러(Controller) - 모델과 뷰 사이의 조정역할과 데이터를 주고받을수 있게 해주는 역할
+							
+							- servlet 문법
+									//요청부분
+									RequestDispatcher view = req.getRequestDispatcher(url);
+									
+									//이동부분
+									view.forward(req, resp);
+									
+									
+									
+						* 팩토리 메소드 패턴(Factory Method Pattern)
+								
+								  팩 객체를 생성하기 위한 인터페이스를 정의
+
+
+						
+						 * 우편번호 http://www.zipfinder.co.kr/zipcode/
+						
+						
+						
