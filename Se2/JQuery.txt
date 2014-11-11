@@ -1,0 +1,130 @@
+	* JQuery(자주쓰는 기능들을 쉽게 쓸수 있도록 만든 자바스크립트 라이브러리 )
+			
+		1. 특징	
+			
+			(1) javascript + css 라이브러리
+					- 가볍고 빠르며, 간결한 오픈소스 자바스크립트 라이브러리
+					- 플랫폼의 구별이 없다.
+					
+			(2) 그외  라이브러리들
+					- Node.js, Angular.js, Prototye,
+					- Dojo, mootools, yui,...
+			
+			(3) 참고 사이트
+					- http://jquery.com/
+			
+			(4) 핵심키워드
+					- 막강한 css 셀렉터
+					- 크로스 브라우저 지원
+					- 메서드 체인
+					- ajax 지원
+					- 풍부한 플러그인 지원
+					
+	
+		2. 준비사항
+		
+			- 라이브러리 준비 준비해서 <script src="라이브러리 위치">
+			- CDN(Content Delivery Network)
+			
+		3. 문법
+			
+			(1) jQuery Selector
+						- HTML DOM을 마음대로 traverse 가능
+						- CSS Selector를 사용하여 원하는 객체 탐색	
+						
+						
+						$("div p").하고싶은 일  or jQuery("div p")
+						$("#loginID")
+						$(".Columns")
+						
+						$("p>a") : 자식
+
+						$("div+a" ) : 형제
+						
+						$("div~a") : 모든 형제
+						
+						1) Attribute Filtering
+									a[title]			
+									a[href ^= "mailto:"]
+									a[href $= ".pdf:"]
+									a[href *= ".jquery.com"]
+									input[type = "text"]
+									
+						2) jQuery Selector : Filter
+								ㄱ. 기본필터
+										: first - 선택자 객체들 중 첫번째 요소와 일치
+										: last 
+										: not(selector) - 괄호에 주어진 selector 와 일치되는 모든 요소를 제외
+										: even -  짝수 요소들과 일치(0부터 시작)
+										: odd
+										: eq(index) - 인덱스에 해당하는 단일 요소와 일치
+										: gt(index) - 주어진 인덱스보다 높은 인덱스를 갖은 모든 요소
+										: li(index) 
+										: header - 모든 헤더 요소들과 일치(h태그)
+										: animated - 현재 애니메이션이 동작 중인 모든 요소
+										
+								ㄴ. 컨텐트필터
+										: contains(text) - 지정한 텍스트를 포함하는 요소
+										: empty - 자식을 가지지 않는 모든 요소와 일치
+										: has(selector) - 지정된 selector에 해당하는 요소를 갖는 모든 요소들과 일치
+										: parent - 부모인 모든 요소들과 일치
+										
+								ㄷ. 자식필터
+										:nth-child(index|even|odd)
+												자식 중 index로 지정된 위치의 요소들과 일치되거나, even, odd에 해당하는 자식들과 일치된다.
+												단, 여기서의 index는 1부터 시작된다.
+										
+										:first-child
+										:last-child
+										:only-child : 자신이 부모요소의 유일한 자식인 모든 요소와 일치
+										
+										
+								ㄹ. 폼필터
+										:input
+										:text
+										:password
+										:radio
+										:checkbox
+										:submit
+										:image
+										:reset
+										:button
+										:file
+										:hidden
+										-------
+										:enabled
+										:disabled
+										:checked
+										:selected
+										-------
+										jQuery(selector).each(function)
+										
+										
+						3) Manipulation Method
+							
+								(1) 내용 변경 메서드
+										html()
+										html(val)
+										text()
+										text(val)
+										
+								(2) 추가 관련 메서드(요소 내부)
+										append(content)
+										appendTo(selector)
+										prepend(content)
+										preprendTo(selector)
+								
+								(3) 추가 관련 메서드(요소 외부)
+										after(content)
+										before(content)
+										insertAfter(selector)
+										insertBefore(selector)
+										
+								(4) 삭제 관련 메서드
+										empty()
+										remove()
+										
+								(5) 복사 관련 메서드
+										clone()
+										clone(bool)
+										
