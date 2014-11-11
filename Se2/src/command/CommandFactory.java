@@ -19,6 +19,12 @@ public class CommandFactory {
 		 //로그인 화면
 		 if(cmd.equals("login"))  return new Login();
 		 
+		 else if(cmd.equals("loginadd"))  return new LoginAdd();
+		 
+		 else if(cmd.equals("loginadd2"))  return new LoginAdd2();
+		 
+		 else if(cmd.equals("loginadd3"))  return new LoginAdd3();
+
 		 else if(cmd.equals("mainpage"))  return new MainPage();
 		 
 		 else if(cmd.equals("map"))  return new Map();
