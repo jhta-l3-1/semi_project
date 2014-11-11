@@ -17,6 +17,6 @@ public class MainPage implements Command {
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("current_state", "mainpage");
-		return "/WEB-INF/pages/main.jsp";
+		return "/pages/main.jsp";
 	}
 }

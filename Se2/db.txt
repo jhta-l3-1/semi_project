@@ -404,7 +404,7 @@
 						ㄱ) update 테이블명 set 필드명=값 where 조건절;
 						
 					- delete
-						ㄱ) delect from 테이블명	where 조건절	
+						ㄱ) delete from 테이블명	where 조건절	
 								
 					*  flashback table 테이블명 to before drop;
 					   show recyclebin; : 휴지통보여주기
@@ -1297,10 +1297,14 @@
 							
 						);
 						
+	create table tblmap(no int not null auto_increment, title varchar(30), latingx varchar(20), latingy varchar(20), date date, constraint pk_no primary key(no) );
 		    데이터 입력 : 
 		    
+							insert into tblmap(latingx,latingy,date) values('41.123123','21.1231',sysdate);
 		    		ex) 
 		    			
+							insert into TBLSAWON(id,name,pass,age,addr,ext,dept) values('hong', '홍길동', '1111', 20, '서울', '3431','영업');
+							insert into TBLSAWON(id,name,pass,age,addr,ext,dept) values('hong', '홍길동', '1111', 20, '서울', '3431','영업');
 							insert into TBLSAWON(id,name,pass,age,addr,ext,dept) values('hong', '홍길동', '1111', 20, '서울', '3431','영업');
 							insert into TBLSAWON(id,name,pass,age,addr,ext,dept) values( 'lim', '임꺽정', '2222', 29, '광주', '3432','영업');
 							insert into TBLSAWON(id,name,pass,age,addr,ext,dept) values( 'lee', '이순신', '3333', 39, '부산', '3433','영업');

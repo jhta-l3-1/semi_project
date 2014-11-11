@@ -17,6 +17,6 @@ public class Login implements Command {
 		
 		HttpSession session = req.getSession();
 		session.setAttribute("current_state", "login");
-		return "/WEB-INF/login/login.jsp";
+		return "/login/login.jsp";
 	}
 }

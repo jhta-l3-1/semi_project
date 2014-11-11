@@ -14,13 +14,13 @@ public class Map implements Command {
 	@Override
 	public Object processCommand(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
+		
 		res.setCharacterEncoding("euc-kr");
 		req.setCharacterEncoding("euc-kr");
-		
-		
 		HttpSession session = req.getSession();
 		session.setAttribute("current_state", "map");
-		return  "/WEB-INF/map/map.jsp";
+		
+		return  "/map/map.jsp";
 	}
 
 }

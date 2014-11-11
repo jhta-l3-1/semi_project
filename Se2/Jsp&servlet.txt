@@ -3,96 +3,96 @@
 	**** Servlet ****
 	
 	
-				1. �غ�
-						1) ������ �غ�
+				1. 준비
+						1) 웹서버 준비
 							jetty, tomcat, apache, iis, webLogic, Jeus, webSphere, ...
 				
-				2. �� ���ø����̼� �غ�
-						1) ���� ����(���ø����̼�)
-								-��������	
+				2. 웹 어플리케이션 준비
+						1) 폴더 생성(어플리케이션)
+								-폴더생성	
 								
-						2) ���� ������ ����
+						2) 메인 페이지 생성
 								-index.html
 						
-						3) �⺻ ����
-								������Ʈ ����  ->	 WEB-INF  ->  classes
+						3) 기본 구조
+								프로젝트 폴더  ->	 WEB-INF  ->  classes
 											     			  lib
 															  web.xml
 												
-				3. ������
-						1) ������(servlet)�̶�?
-								- �������� ����Ǵ� java application
+				3. 서블릿
+						1) 서블릿(servlet)이란?
+								- 서버에서 실행되는 java application
 						
-						2) �غ�	
+						2) 준비	
 								- api document
-								- ���̺귯��
+								- 라이브러리
 								
-						3) �� ������Ʈ �غ�
+						3) 웹 프로젝트 준비
 								- ServletAPP
 								
-						4) Ư¡
-								- �ڹٷ� ���� ���α׷�
-								- Ŭ���̾�Ʈ�� ������ ����
-								- javax.servlet.http.HttpServlet (���)
+						4) 특징
+								- 자바로 만든 프로그램
+								- 클라이언트와 소통이 가능
+								- javax.servlet.http.HttpServlet (상속)
 								
-						5) ������ ���� ���
-								- ������������ ����
-								- �̵� ������(html)�� ���� �������� ����
+						5) 서블릿 소통 방식
+								- 서블릿만으로 소통
+								- 미들 페이즈(html)를 통해 서블릿과 소통
 						
-						6) �������� �����ϴ� �ٽ� Ŭ����
+						6) 서블릿을 구성하는 핵심 클래스
 								- HttpServlet
 											javax.servlet.GenericServlet
 										
-								- HttpServletRequest(Ŭ���̾�Ʈ -> ����)
+								- HttpServletRequest(클라이언트 -> 서버)
 											public interface ServletRequest
 											
-											req.getParameter (Ŭ���̾�Ʈ�� ������ �����͸� ������)
+											req.getParameter (클라이언트가 보내온 데이터를 가져옴)
 											
-								- HttpServletResponse(���� -> Ŭ���̾�Ʈ)
+								- HttpServletResponse(서버 -> 클라이언트)
 											public interface ServletResponse
 									
 						
-						 7) ��û���
+						 7) 요청방식
 								- GET
-										- �����۸�ũ ���� ���, URL ���۹��
-										- ���� ����� �پ�
-										- �ҷ��� �����͸� ���۰���
-										- ���۵Ǵ� �����Ͱ� ����(�ּ� ǥ����)
-										- �⺻ ��û ���
-										- ������ �������� ������ ��ȸ
+										- 하이퍼링크 전송 방식, URL 전송방식
+										- 전송 방식이 다양
+										- 소량의 데이터만 전송가능
+										- 전송되는 데이터가 노출(주소 표시줄)
+										- 기본 요청 방식
+										- 서버측 데이터의 정보를 조회
 										
 								- POST
-										- �� ���� ��� �� �Ѱ���
-										- �뷮�� ������ ���۰���
-										- �����Ͱ� ������� �ʴ´�.
-										- ������ ������ ����
+										- 폼 전송 방식 단 한가지
+										- 대량의 데이터 전송가능
+										- 데이터가 노출되지 않는다.
+										- 서버측 데이터 변경
 						
 						
-						8) ������ ������ ���� �ֿ� �޼���
+						8) 데이터 전송을 위한 주요 메서드
 								- String getParameter(String name)
-										: ���������� �������� ���� ������ ��
+										: 개별적으로 변수값을 따로 가져올 때
 								
 								- String[] getParameterValues(String name)
-										: �������� �������� �迭�� ������
+										: 여러개의 변수값을 배열로 가져옴
 								
 								- java.util.Enumeration<String> getParameterNames()
-										: ������
-										: ���� ����Ű�� ��纯���� �Ѳ����� ������ 
+										: 열거형
+										: 값을 가르키는 모든변수를 한꺼번에 가져옴 
 										
 								- java.util.Map<String.String[]> getParameterMap()
-										: �ΰ��� �����͸� �ϳ��� ��� �������°�
+										: 두개의 데이터를 하나로 묶어서 가져오는것
 									
-						9) �������� LifeCycle
-								(1) init()  �޼��� ����� �ʱ�ȭ �κп��� �ڵ����� ����Ǵ� �κ�
-								(2) service(); �޼��� ����κ�
-								(3) destroy() �޼��� ����κ�
+						9) 서블릿의 LifeCycle
+								(1) init()  메서드 실행시 초기화 부분에서 자동으로 실행되는 부분
+								(2) service(); 메서드 내용부분
+								(3) destroy() 메서드 종료부분
 								
-						10) header ���� ��������
+						10) header 정보 가져오기
 								- httpServletRequest
 								
-						11) ������ �̵� 2����
-								(1) Ŭ���̾�Ʈ �� �̵�
-										-> ����ڰ� �̵���� �˼� ������, �ٸ� �� ����Ʈ�� �̵��Ҽ��ִ�.
+						11) 페이지 이동 2가지
+								(1) 클라이언트 측 이동
+										-> 사용자가 이동사실 알수 있으며, 다른 웹 사이트로 이동할수있다.
 									- html
 												<a></a>	
 												<meta ...>
@@ -105,67 +105,67 @@
 									- java
 											response.sendRedirect();
 											
-								 (2) ���� �� �̵�
-								 			-> ����ڰ� �̵������ �𸣸� , �ٸ� �� ����Ʈ�� �̵��Ҽ� ����.
+								 (2) 서버 측 이동
+								 			-> 사용자가 이동사실을 모르며 , 다른 웹 사이트로 이동할수 없다.
 								 	- java	
 								 			<jsp:include>
 								 			<jsp:forward>
 								 			<#@page errorPage="">
 									
 								(2) Data Persistance 
-										: �񿬰� �������� html�� ������ �����ϱ����ؼ� ���
-										: Ŭ���̾�Ʈ���� ���� ������ ���� ��Ű�� ������ ���	
+										: 비연결 지향적인 html의 단점을 보안하기위해서 사용
+										: 클라이언트와의 정보 유지를 위해 쿠키와 세션을 사용	
 									
-									- Cookie : ������ ���ӽ� ������ Ŭ���̾�Ʈ�� ������ Ŭ���̾�Ʈ�� �����Ѵ�.
-											 : ���Ŀ� ������ ���۵Ǵ� ��û���� ��Ű�� ������ �ִ� ������ ���� ���ԵǾ ����.
+									- Cookie : 서버에 접속시 접속한 클라이언트의 정보를 클라이언트에 저장한다.
+											 : 이후에 서버에 전송되는 요청에는 쿠키가 가지고 있는 정보가 같이 포함되어서 전송.
 											 : HttpServletRequest, HttpServeltResponse
 										
 									
-									- Session : ������ ����Ǿ� ���� ����ڸ��� ������ ������ ��Ű���� ���ȼ��� ����.
-											  : ��, ������ ����Ǿ� �޸𸮸� �����ϱ� ������ ������ ������ ����.
+									- Session : 서버에 저장되어 현재 사용자만이 인증을 받으며 쿠키보다 보안성이 높다.
+											  : 단, 서버에 저장되어 메모리를 차지하기 때문에 서버에 무리가 간다.
 											  : HttpSession
-											  			->  (����, ��)
-											  			-> setMaxInactiveInterval : ������ �־� �ڵ����� �����̻����ǰ� �ϴ� �޼ҵ�
-														-> getCreationTime() : ������ ���� �ð��������ش�(���ӽð��������ش�.)
+											  			->  (변수, 값)
+											  			-> setMaxInactiveInterval : 졔한을 주어 자동으로 세션이삭제되게 하는 메소드
+														-> getCreationTime() : 세션을 만든 시간을보여준다(접속시간을보여준다.)
 									
 									
 
 * JSP
 						
-							1. HTML�ȿ� �ڹ� �ڵ带 ���Խ�Ű�� ����
-							2. �������
+							1. HTML안에 자바 코드를 포함시키는 형태
+							2. 구성요소
 								1) Template Data
-											- html, xml ��
-								2) Elements(���� ������)
+											- html, xml 등
+								2) Elements(동적 데이터)
 									(1) Script Element
-										- HTML �ȿ� �ڹ� �ڵ带 �����ְ� ���� �� �ִ� ����
-											<%!    %> : �����(declaration) -> �ν��Ͻ�����, �޼���
+										- HTML 안에 자바 코드를 끼워넣게 해줄 수 있는 문법
+											<%!    %> : 선언부(declaration) -> 인스턴스변수, 메서드
 																			
-											<%    %> : ó����(scriptlet)  -> �����ݷ� ���
-																		 -> ������ �ڹ� �ڵ�
-											<%=   %> : ǥ����(expression) 
+											<%    %> : 처리부(scriptlet)  -> 세미콜론 사용
+																		 -> 순수한 자바 코드
+											<%=   %> : 표현부(expression) 
 											
-									(2) Dircetive - ���þ�
-										- ���� �������� ���ø� �������� �Ҷ� ����ϴ� ���� 
+									(2) Dircetive - 지시어
+										- 현재 페이지에 지시를 내리고자 할때 사용하는 도구 
 											<%@page properties....  %>
 											
-													{ import=��importList�� }
-													{ errorPage=��error_url�� }
-													{ isErrorPage=��true|false�� }
-													{ contentType=��ctinfo�� }
-													{ session=��true|false�� }
-													{ buffer=��none|sizekb�� }		-> ��� ����
-													{ autoFlush=��true|false�� }
-													{ info=��info_text�� }
-													{ isELIgnored=��true|false�� }
+													{ import=”importList” }
+													{ errorPage=”error_url” }
+													{ isErrorPage=”true|false” }
+													{ contentType=”ctinfo” }
+													{ session=”true|false” }
+													{ buffer=”none|sizekb” }		-> 출력 버퍼
+													{ autoFlush=”true|false” }
+													{ info=”info_text” }
+													{ isELIgnored=”true|false” }
 											
 											<%@include file="..."  %>
 											<%@taglib properties.... %>
 										
 										
 									(3) Implicit Object
-										- ����� ����
-											request		: HttpServletRequest(�����, context)
+										- 입출력 관련
+											request		: HttpServletRequest(입출력, context)
 											response	: HttpServletResponse
 											out			: javax.serlvet.jspWriter
 											
@@ -178,16 +178,16 @@
 											application : ServletContext
 											pageContext : javax.servlet.jsp.PageContext
 									
-										- ����ó��
+										- 예외처리
 											exception	: java.lang.Throwable
 										
-										- Context���� ��ü���� ���� �޼���
-												setAttribute(������, ��)
-												getAttribute(������)
-												removeAttribute(������)
+										- Context관련 객체들의 공통 메서드
+												setAttribute(변수명, 값)
+												getAttribute(변수명)
+												removeAttribute(변수명)
 												
 												
-									(4) Action Tag :  XML ������ ������ ������ �ܵ� �±��� ��쵵 �ݵ�� ���� �±׸� �����ؾ� �Ѵ�.
+									(4) Action Tag :  XML 문법을 따르기 때문에 단독 태그의 경우도 반드시 종료 태그를 포함해야 한다.
 									
 									
 									(5)	EL	
@@ -195,142 +195,415 @@
 									
 									
 								3) LifeCycle
-									(1) jspInit() - �������� �ʱ�ȭ �۾��� ����� �� �ڵ����� ȣ��Ǵ� �޼���
+									(1) jspInit() - 서블릿의 초기화 작업이 수행될 때 자동으로 호출되는 메서드
 									(2) jspService()
-									(3) jspDestroy() - �������� ������ �۾��� ����ɶ� �ڵ����� ȣ��Ǵ� �޼���
+									(3) jspDestroy() - 서블릿의 마무리 작업이 수행될때 자동으로 호출되는 메서드
 			
 									
-								4) ��ȿ�� �˻�
-									(1) Ŭ���̾�Ʈ üũ
-									(2) ���� üũ	
+								4) 유효성 검사
+									(1) 클라이언트 체크
+									(2) 서버 체크	
 									
 							
 								5) Action Tag
-								    (1) ǥ�� �׼� �±� : �ڹټҽ��� html�ȿ��� ����� ���Ϸ���
+								    (1) 표준 액션 태그 : 자바소스를 html안에서 사용을 안하려고
 								    		
-									     ��. bean tag	
-											 - <jsp:useBean> �ڹٺ��� JSP ���������� ����� �� ��� 
-											 - <jsp:setProperty> ������Ƽ�� ���� ������ �� ��� 
-											 - <jsp:getProperty> ������Ƽ�� ���� �� �� ���
+									     ㄱ. bean tag	
+											 - <jsp:useBean> 자바빈을 JSP 페이지에서 사용할 때 사용 
+											 - <jsp:setProperty> 프로퍼티의 값을 세팅할 때 사용 
+											 - <jsp:getProperty> 프로퍼티의 값을 얻어낼 때 사용
 										 
-										 ��. 
-											 - <jsp:forward> ������ ������ ��� �̵���ų �� ��� 
-									    	 - <jsp:include> �ٸ� �������� ���� ����� ������ �������� ���Խ�ų�� ��� 
+										 ㄴ. 
+											 - <jsp:forward> 페이지 사이의 제어를 이동시킬 때 사용 
+									    	 - <jsp:include> 다른 페이지의 실행 결과를 현재의 페이지에 포함시킬때 사용 
 											 - <jsp:params> 
 											 - <jsp:param> 
 
-								    (2) ����� ���� �׼� �±�
-								     	 - <jsp:include> �ٸ� �������� ���� ����� ������ �������� ���Խ�ų�� ���
-													-> ������ �̵� �� ����
-													-> �̵� �� �����ϸ鼭 �Ķ���� ����
-													-> request scope�� �ַ� �̿�
+								    (2) 사용자 정의 액션 태그
+								     	 - <jsp:include> 다른 페이지의 실행 결과를 현재의 페이지에 포함시킬때 사용
+													-> 페이지 이동 및 복귀
+													-> 이동 및 복귀하면서 파라미터 전달
+													-> request scope를 주로 이용
 													
-									* jps - ���������̼� ���� 
-									  bean - �����Ͻ� ����
+									* jps - 프레젠테이션 로직 
+									  bean - 비지니스 로직
 													
 													
 													
-										- <jsp:forward> ������ ������ ��� �̵���ų �� ���
-													-> ������ ������ �̵� ��� : ����ڰ� �������� �̵��� �� �𸥴�.
+										- <jsp:forward> 페이지 사이의 제어를 이동시킬 때 사용
+													-> 서버측 페이지 이동 기술 : 사용자가 페이지가 이동한 줄 모른다.
 									
 									
-							   	6) BEANS(=���۷�Ʈ)
-									   : jsp���� ���������� �ڹ�Ŭ����
+							   	6) BEANS(=컨퍼런트)
+									   : jsp에서 떨어져나온 자바클래스
 									   
-									  (1) <jsp:useBean> �ڹٺ��� JSP ���������� ����� �� ���
-									  				-> �ν��Ͻ� ����
-									  				-> �ν��Ͻ��� �����Ǿ� �ִٸ� ����
-									  				-> scope : ��ü�� ������ ����� ���ΰ�?
+									  (1) <jsp:useBean> 자바빈을 JSP 페이지에서 사용할 때 사용
+									  				-> 인스턴스 생성
+									  				-> 인스턴스가 생성되어 있다면 참조
+									  				-> scope : 빈객체를 어디까지 사용할 것인가?
 									  				
-									  (2) <jsp:setProperty> ������Ƽ�� ���� ������ �� ��� 
-									  				-> setter�޼��� ȣ�� 
+									  (2) <jsp:setProperty> 프로퍼티의 값을 세팅할 때 사용 
+									  				-> setter메서드 호출 
 
-									  (3) <jsp:getProperty> ������Ƽ�� ���� �� �� ���
-									  				-> getter�޼��� ȣ�� + ���
+									  (3) <jsp:getProperty> 프로퍼티의 값을 얻어낼 때 사용
+									  				-> getter메서드 호출 + 출력
 									  				
-									* java bean �Ծ�
-									[ property �Ծ�]
+									* java bean 규약
+									[ property 규약]
 									
-											(1) getter �޼����� ���
-													 - get(�ҹ���)���� �����Ѵ�.
-													 - get������ ���۵Ǵ� ù��° ���ڴ� �빮��
-													 - �ݵ�� ���� Ÿ���� �;� �Ѵ�.
-													 - �ݵ�� �Ű������� ����� ��
+											(1) getter 메서드의 경우
+													 - get(소문자)으로 시작한다.
+													 - get다음에 시작되는 첫번째 문자는 대문자
+													 - 반드시 리턴 타입이 와야 한다.
+													 - 반드시 매개변수를 없어야 함
 					 								
-											(2) setter �޼����� ���
-													 - set(�ҹ���)���� �����Ѵ�.
-													 - set������ ���۵Ǵ� ù��° ���ڴ� �빮��
-													 - �ݵ�� ���� Ÿ������ void�� �;� �Ѵ�.
-													 - �ݵ�� �Ű������� �־����.
+											(2) setter 메서드의 경우
+													 - set(소문자)으로 시작한다.
+													 - set다음에 시작되는 첫번째 문자는 대문자
+													 - 반드시 리턴 타입으로 void가 와야 한다.
+													 - 반드시 매개변수가 있어야함.
 									
-										ex) <jsp:useBean id="����" class="Ŭ�������"/>
-											<jsp:setProperty property="set�޼����̸�" name="Ŭ���� ����" value="��"/>
-											<jsp:getProperty property="get�޼����̸�" name="Ŭ���� ����"/>
+										ex) <jsp:useBean id="변수" class="클래스경로"/>
+											<jsp:setProperty property="set메서드이름" name="클래스 변수" value="값"/>
+											<jsp:getProperty property="get메서드이름" name="클래스 변수"/>
 											
 	
-				7) ���� property ����
-						(1) ��-���� ������Ƽ
+				7) 빈의 property 종류
+						(1) 참-거짓 프로퍼티
 						
 								- boolean isValid(){
 										...
 										return false;/true;
 								  }
 								  
-								  			= ���� get �˻� �� is �˻�
+								  			= 먼저 get 검색 후 is 검색
 						
-						(2) �ε��� ������Ƽ
-								- �迭������ �������� return�Ѵ�.
-								- �ε��� ������Ƽ ���� �׼��±�(���ϰ��� �������ִ�) ��� �Ұ�
-								- ����� ���� �׼��±� ���
-								- jstl [ ������������ ���¼ҽ�]
-								- el [ ǥ�ع���, ��� ���� �ڵ� ]
+						(2) 인덱스 프로퍼티
+								- 배열값으로 여러개를 return한다.
+								- 인덱스 프로퍼티 사용시 액션태그(단일값만 받을수있는) 사용 불가
+								- 사용자 정의 액션태그 사용
+								- jstl [ 여러개발자의 오픈소스]
+								- el [ 표준문법, 출력 관련 코드 ]
 								
 						
 						
 						
-						** ����
+						** 패턴
 							
-							DTO (Data Tranfer Object) = VO = Entity (��κ� ���� �ǹ̷� ������Ʈ���� ���)
+							DTO (Data Tranfer Object) = VO = Entity (대부분 같은 의미로 프로젝트에서 사용)
 							
-								- ������ �̵� ��ü, ���� ������ �����͸� �����ϰ� �̵��� �� �ֵ��� ����ڿ� ���� ���ǵǾ����� ��ü
-								  ���̺��� �ִ� �ʵ尪�� �״�� ����ʵ尪���� ������ش�. getter�޼���� setter�޼���� �����Ǿ� �ִ�. 
+								- 데이터 이동 객체, 여러 형태의 데이터를 저장하고 이동할 수 있도록 사용자에 의해 정의되어지는 객체
+								  테이블에 있는 필드값을 그대로 멤버필드값으로 만들어준다. getter메서드와 setter메서드로 구성되어 있다. 
 
 
-						**  ���ϰ��
+						**  파일경로
 									String path = getServletContext().getRealPath("/");
 									
 							
 		
-						* ���Ͼ��ε�
+						* 파일업로드
 							www.servlets.com	
 							
 						* MultipartRequest
 																					  
-							�� request ��ü,               �� ����� ���� ���,       �� ���� �ִ� ũ��,    �� ���ڵ� ���,       �� ���� �̸��� ���ϸ� ���� ó��
+							↓ request 객체,               ↓ 저장될 서버 경로,       ↓ 파일 최대 크기,    ↓ 인코딩 방식,       ↓ 같은 이름의 파일명 방지 처리
 							HttpServletRequest request, String saveDirectory, int maxPostSize, String encoding, FileRenamePolicy policy)
 							
-						* MVC Architecture -> model view controller -> �ӹ� �д�
+						* MVC Architecture -> model view controller -> 임무 분담
 						
-							 -	��(Model) - ������ ���� �κ�
-							 -	��(View) - ǥ���� �ô� �κ�
-							 -	��Ʈ�ѷ�(Controller) - �𵨰� �� ������ �������Ұ� �����͸� �ְ������� �ְ� ���ִ� ����
+							 -	모델(Model) - 정보를 담은 부분
+							 -	뷰(View) - 표현을 맡는 부분
+							 -	컨트롤러(Controller) - 모델과 뷰 사이의 조정역할과 데이터를 주고받을수 있게 해주는 역할
 							
-							- servlet ����
-									//��û�κ�
+							- servlet 문법
+									//요청부분
 									RequestDispatcher view = req.getRequestDispatcher(url);
 									
-									//�̵��κ�
+									//이동부분
 									view.forward(req, resp);
 									
 									
 									
-						* ���丮 �޼ҵ� ����(Factory Method Pattern)
+						* 팩토리 메소드 패턴(Factory Method Pattern)
 								
-								  �� ��ü�� �����ϱ� ���� �������̽��� ����
+								  팩 객체를 생성하기 위한 인터페이스를 정의
 
 
 						
-						 * ������ȣ http://www.zipfinder.co.kr/zipcode/
+						 * 우편번호 http://www.zipfinder.co.kr/zipcode/
+						
+							
 						
 						
+						*  El(Expression Language)
+							
+							1. 정의 및 특징
+							 1) 값을 표현하는 데 사용되는 스크립트 언어로써 JSP 문법을 보완
+							 2) out.println(),<%=...%>과 같은 코드를 더이상 사용하지 않고 좀 더 간편하게 출력을 지원
+							 3) <jsp:getProperty>를 대체할 수 있는 출력 표현
+							 
+							 
+							2. 문법
+							 ${식}
+							 
+							 
+							3. 식
+							 1) ${attribute명} : 어트리뷰트를 사용할 때는 객체명 생략 가능
+							 2) ${bean or map}
+							 3) ${EL 내장 객체}
+							 4) ${객체.프로퍼티 or 객체[프로퍼티]}
+							 
+							 
+							4. EL 내장 객체
+							
 						
+							Category   							  식별자      		  설명
+							  JSP  							 pageContext    		 현재 페이지의 프로세싱과 상응하는 PageContext 인스턴스 
+							              
+							 범위 								 pageScope 				 페이지 범위 애트리뷰트 이름과 값과 관련된 Map 
+																 requestScope 			 요청 범위 애트리뷰트 이름과 값과 관련된 Map 
+																 sessionScope 			 세션 범위 애트리뷰트 이름과 값과 관련된 Map 
+																 applicationScope 		 애플리케이션 범위 애트리뷰트 이름과 값과 관련된 Map 
+													 
+							 요청 매개변수 					 param 					 요청 매개변수의 기본 값을 이름으로 저장하는 Map 
+																 paramValues 			 요청 매개변수의 모든 값을 String Array 로 저장하는 Map 
+													
+							 요청 헤더 						 header 					 요청 헤더의 기본 값을 이름으로 저장하는 Map 
+																 headerValues 			 요청 헤더의 모든 값을 String Array 로 저장하는 Map 
+													
+							 쿠키 								 cookie 					 요청에 수반되는 쿠키들을 이름으로 저장하는 Map 
+							
+							 초기화 
+				     	     매개변수 						 initParam				 웹 애플리케이션의 콘텍스트 초기화 매개변수를 
+							 																 이름으로 저장하는 Map 
+							 																	
+							 																	
+							 5. EL 연산자
+									
+									1)	산술연산자
+										
+										더하기                          +
+										빼기                             -
+										곱하기                          *
+										나누기                           / 와 div
+										나머지                            mod 와 %
+									
+									
+									2) 논리 연산자
+									
+										AND                             && 와 and
+										OR                                || 와 or
+										NOT                               ! 와 not
+									
+									 3) 관계 연산자
+									
+										등호                              == 와 eq
+										부등호                           != 와 ne
+										~보다 작다                     < 와 lt
+										~보다 크다                     > 와 gt
+										~보다 작거나 같다.            <= 와 le
+										~보다 크거나 같다.            >= 와 ge
+
+
+							 		4)
+							 			instanceof 항후 사용을 위해 미리 예약해둔 문자
+										empty   널이거나 비어 있는지 체크하기 위한 연산자.
+										 		 ex) ${empty A} A가 널이거나 비어있으면 참을 나타냄.
+
+							 		5) 삼항연산자
+							 			
+							 			(조건) ? 참 : 거짓		
+							 			
+							 		
+							 	** 사용자 정의 태그
+									
+									태그를 만들기 위해 클래스를 만들고 중간다리에 설명부분(.TLD)을 추가
+									
+									
+									
+									ex) 000.jsp
+											<%@ taglib prefix="my"  uri="test1" %>
+											
+									
+									ex) 0000.tld
+											<taglib version = "2.0">
+												<tilb-version>1.0</tilb-version>
+												<short-name>test1</short-name>
+												<uri>test1</uri>
+												
+												<function>
+													<name>dice</name>
+													<!-- 내가 사용할 클래스 위치 -->
+													<function-class>mybean.BeanTest</function-class>
+													<!-- 내가 사용할 메서드 위치 -->
+													<function-signature>int rollDice()</function-signature>
+												</function>
+											</taglib>
+								
+								
+							JSTL(Jsp Standard Tag Library)
+							-------------------------------------------------
+							1. 역할 및 특징
+								 1) 표준 액션태그로 처리하기 힘든 부분 담당 
+								 2) 연산, 조건, 반복 처리
+								 3) 개발자가 따로 구현 가능
+							 
+							2. 구분
+							
+								 1) Core
+								  (1) 일반 프로그래밍에서 제공하는 것과 유사한 변수 선언, 실행 흐름 제어 기능 등을 제공
+								  (2) 페이지 이동 기술 제공
+								  (3) uri : http://java.sun.com/jsp/jstl/core
+								       prefix : c
+								       
+								 2) Formatting
+								  (1) 숫자, 날짜, 시간을 포매팅하는 기능과 국제화, 다국어 지원기능 제공
+								  (2) uri : http://java.sun.com/jsp/jstl/fmt
+								       prefix : fmt
+								       
+								 3) Database
+								  (1) DB의 데이터를 입력/수정/삭제/조회하는 기능을 제공
+								  (2) uri : http://java.sun.com/jsp/jstl/sql
+								       prefix : sql
+								       
+								 4) XML
+								  (1) XML문서를 처리할 때 필요한 기능을 제공
+								  (2) uri : http://java.sun.com/jsp/jstl/xml
+								       prefix : x
+								       
+								 5) Function
+								  (1) 문자열을 제공하는 함수 제공
+								  (2) uri : http://java.sun.com/jsp/jstl/functions
+								       prefix : fn
+								       
+							3. CORE
+								  (1) <c:set>
+								  			int num = 100; 
+								  			----------------
+								  			<c:set var="num" value="100"/>
+								  			<c:set var="num" value="100" scope="page"/>
+								  			
+								  (2) <c:out>
+								  			<c:out value="출력할 값" default="value가 널일때 대신 출력할 값" />
+								  			
+								  
+								  (3) <c:remove>
+								  			<c:remove var ="변수명" scope="영역" />
+								  			
+								  (4) <c:if>
+								  		else가없다
+								  		<c:if test="조건식" var="조건식을 검사하고 리턴되는 불값을 저장할 변수" scope="bool변수가 사용될 범위"/>
+								  		
+								  (5) <c:choose>
+								  		다중 조건식
+								  		
+								  		<c:choose>
+									       <c:when test="조건식"></c:when >
+									       <c:otherwise> </c:otherwise>
+									    </c:choose>
+
+
+								   (6) <c:foreach>
+								   			
+								   			자바언어의 for(초기값 ; 조건 ; 증가치) 형태 : 자바의 일반 for문 형태
+								   			<c:foreach begin="시작값" end="끝값" step="증가값" var="카운트변수">
+								   			<c:foreach var="카운트변수" items="배열이나 컬렉션">
+								   			
+												•index : 반복에서 현재 인덱스 ex) varstauts.index
+												•count : 반복 횟수 ex) varstauts.count
+												•begin : 시작 값
+												•end : 마지막 값
+												•step : 반복의 증감치
+												•first :현재 실행이 반복의 처음이면 true
+												•last : 현재 실행이 반복의 마직막이면 true
+												•current : 컬렉션 중 현재 반복에서 사용할 객체
+
+						
+						
+									(7) <c:foTokens>
+												<c:foTokens items="" delims="구분자" var="" begin="" end="" step="">
+									
+									
+									(8) <c:catch>
+											try문에 해당
+											catch는 별도 처리
+											
+									
+									* 오류 처리 방법(web.xml)
+									1) 모두 다 적용되는 오류페이지 선언
+									2) 특정 예외 사상에 대해 선언
+									3) http상태 코드에 대해 선언
+									
+									
+									
+									(9) <c:redirect url="경로" />
+									
+										<c:redirect url="경로">
+											<c:param name="" value="" />
+										</c:redirect>
+										
+									
+									(10) <c:import>
+												<jsp:include/>와 비슷
+												
+									(11) <c:url> 어디로 이동할건지만 지정
+													<c:set>과 비슷
+													get방식으로 parameter전달
+													
+													
+													
+							4. Formatting
+							
+										-	포맷
+												<fmt:formatNumber value="1000000"/>
+												<fmt:formatNumber value="1000000" groupingUsed="false"/>
+												
+										- 소숫점 정리		
+												<fmt:formatNumber value="3.14158"  pattern="#.##" />
+												
+										- 빈자리 채우기 
+												<fmt:formatNumber value="10.5"  pattern="#.00" />
+												
+										- 단위
+												<fmt:formatNumber value="0.5"  type="percent" />
+												
+										- 금액표시( type="currency" -> 수치를 금액으로 표시 출력 ,  
+																						currencySymbol="\" -> 금액앞에붙는 화폐단위표시)
+																						
+												<fmt:formatNumber value="250000000"  type="currency" currencySymbol="\"/>
+												
+										- 날짜, 시간 포맷( type="time" 시간 출력, type="date" 날짜 출력, type="both" 날짜 시간 모두 출력, 기본값) 
+										
+												<fmt:formatDate value="${date}" type="time"/>
+											
+										- 요일 포맷	(full , long , medium, short)
+										
+												<fmt:formatDate value="${date}" dateStyle="full"/>
+
+										- 시간 포맷	(full , long , medium, short)
+												
+												<fmt:formatDate value="${date}" timeStyle="full" type="time"/><br>
+
+										- 요일, 시간 포맷 (full , long , medium, short)
+
+												 <fmt:formatDate value="${date}" dateStyle="long" timeStyle="long" type="both"/><br>
+												 
+										- 사용자 지정 패턴
+										
+												<fmt:formatDate value="${date}" type="date" pattern="yyyy/MM/dd(E)"/><br>
+											    <fmt:formatDate value="${date}" type="time" pattern="(a) hh:mm:ss"/><br>
+											   
+										- 세계시간 [1] -> 한국시간기준
+										
+												 <fmt:formatDate value="${date}" type="both"/><br>
+
+												 <fmt:timeZone value="Asia/Hong_Kong">
+												 홍콩 : <fmt:formatDate value="${date}" type="both"/>
+												 </fmt:timeZone><br>
+												 
+										- 세계시간 [2] -> 셋팅한 나라 기준
+										
+												<fmt:setTimeZone value="America/New_York"/>
+ 												<fmt:formatDate value="${date}" type="both"/>
+ 		
+										- 다국어 지원		 
